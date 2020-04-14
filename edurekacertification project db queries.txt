@@ -1,0 +1,101 @@
+ db.createCollection('news_list');
+{ "ok" : 1 }
+> db.createCollection('user_list');
+{ "ok" : 1 }
+> db.createCollection('contactus_list');
+{ "ok" : 1 }
+> db.user_list.insert({
+... name:'test',
+... email:'test@gmail.com',
+... password:test1
+... })
+2020-04-14T13:55:10.052-0500 E  QUERY    [js] uncaught exception: ReferenceError: test1 is not defined :
+@(shell):4:1
+> db.user_list.insert({
+... ... name:'test',
+... ... email:'test@gmail.com',
+... ... password:test1
+... ... })
+2020-04-14T13:59:30.052-0500 E  QUERY    [js] uncaught exception: ReferenceError: test1 is not defined :
+@(shell):4:1
+> db.user_list.insert({ name:'test', email:'test@gmail.com', password:'test1' });
+WriteResult({ "nInserted" : 1 })
+> db.user_list.insert({ name:'test2', email:'test2@gmail.com', password:'test2' });
+WriteResult({ "nInserted" : 1 })
+>
+> db.user_list.find().pretty();
+{
+        "_id" : ObjectId("5e96081f4c6ce9ea8f76c2b3"),
+        "name" : "test",
+        "email" : "test@gmail.com",
+        "password" : "test1"
+}
+{
+        "_id" : ObjectId("5e96083e4c6ce9ea8f76c2b4"),
+        "name" : "test2",
+        "email" : "test2@gmail.com",
+        "password" : "test2"
+}
+
+ db.new_list.insert({
+... title:'sport news',
+... description:'sport news description will go here',
+... url:'add news url here',
+... urlToImage:'https://images-na.ssl-images-amazon.com/images/I/51DSrXcUphL._AC_SY606...',
+... publishedAt:'abc news',
+... insertTime:ISODate("2014-02-10T10:50:42.389Z")
+... });
+WriteResult({ "nInserted" : 1 })
+> db.new_list.insert({ title:'sport news', description:'sport news description will go here', url:'add news url here', urlToImage:'https://images-na.ssl-images-amazon.com/images/I/51DSrXcUphL._AC_SY606...', publishedAt:'abc news', insertTime:ISODate("2014-02-10T10:50:42.389Z") });
+WriteResult({ "nInserted" : 1 })
+WriteResult({ "nInserted" : 1 })
+> db.new_list.find().pretty();
+{
+        "_id" : ObjectId("5e960dc84c6ce9ea8f76c2b5"),
+        "title" : "sport news",
+        "description" : "sport news description will go here",
+        "url" : "add news url here",
+        "urlToImage" : "https://images-na.ssl-images-amazon.com/images/I/51DSrXcUphL._AC_SY606...",
+        "publishedAt" : "abc news",
+        "insertTime" : ISODate("2014-02-10T10:50:42.389Z")
+}
+{
+        "_id" : ObjectId("5e960de24c6ce9ea8f76c2b6"),
+        "title" : "sport news",
+        "description" : "sport news description will go here",
+        "url" : "add news url here",
+        "urlToImage" : "https://images-na.ssl-images-amazon.com/images/I/51DSrXcUphL._AC_SY606...",
+        "publishedAt" : "abc news",
+        "insertTime" : ISODate("2014-02-10T10:50:42.389Z")
+}
+ db.contactus_list.insert({
+... contact_name:'test',
+... contact_email:'testemail@gmail.com',
+... contact_message:'this is message from test1',
+... contact_time: new Date()
+... });
+WriteResult({ "nInserted" : 1 })
+>  db.contactus_list.insert({
+... ... contact_name:'test',
+... ... contact_email:'testemail@gmail.com',
+... ... contact_message:'this is message from test1',
+... ... contact_time: new Date()
+... ... });
+WriteResult({ "nInserted" : 1 })
+> db.contact_list.find().pretty();
+> db.contactus_list.find().pretty();
+{
+        "_id" : ObjectId("5e9610a24c6ce9ea8f76c2b7"),
+        "contact_name" : "test",
+        "contact_email" : "testemail@gmail.com",
+        "contact_message" : "this is message from test1",
+        "contact_time" : ISODate("2020-04-14T19:36:02.501Z")
+}
+{
+        "_id" : ObjectId("5e9610c84c6ce9ea8f76c2b8"),
+        "contact_name" : "test",
+        "contact_email" : "testemail@gmail.com",
+        "contact_message" : "this is message from test1",
+        "contact_time" : ISODate("2020-04-14T19:36:40.566Z")
+}
+
